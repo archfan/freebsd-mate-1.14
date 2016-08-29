@@ -1,0 +1,7 @@
+%%DATADIR%%/data/omf.make
+%%DATADIR%%/data/xmldocs.make
+share/aclocal/mate-code-coverage.m4
+share/aclocal/mate-compiler-flags.m4
+share/aclocal/mate-common.m4
+bin/mate-doc-common
+bin/mate-autogen

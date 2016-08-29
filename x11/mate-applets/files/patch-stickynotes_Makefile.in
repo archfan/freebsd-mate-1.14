@@ -1,0 +1,115 @@
+--- stickynotes/Makefile.in.orig	2016-08-29 16:14:13 UTC
++++ stickynotes/Makefile.in
+@@ -88,8 +88,7 @@ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ build_triplet = @build@
+ host_triplet = @host@
+-@BUILD_STICKYNOTES_APPLET_TRUE@libexec_PROGRAMS =  \
+-@BUILD_STICKYNOTES_APPLET_TRUE@	stickynotes-applet$(EXEEXT)
++@BUILD_STICKYNOTES_APPLET_TRUE@libexec_PROGRAMS = mate-stickynotes-applet$(EXEEXT)
+ subdir = stickynotes
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/m4/ac-define-dir.m4 \
+@@ -109,20 +108,21 @@ am__installdirs = "$(DESTDIR)$(libexecdi
+ 	"$(DESTDIR)$(builderdir)" "$(DESTDIR)$(servicedir)" \
+ 	"$(DESTDIR)$(uidir)"
+ PROGRAMS = $(libexec_PROGRAMS)
+-am__stickynotes_applet_SOURCES_DIST = util.h util.c stickynotes.h \
++am__mate_stickynotes_applet_SOURCES_DIST = util.h util.c stickynotes.h \
+ 	stickynotes_callbacks.h stickynotes_applet.h \
+ 	stickynotes_applet_callbacks.h stickynotes.c \
+ 	stickynotes_callbacks.c stickynotes_applet.c \
+ 	stickynotes_applet_callbacks.c
+-@BUILD_STICKYNOTES_APPLET_TRUE@am_stickynotes_applet_OBJECTS =  \
++@BUILD_STICKYNOTES_APPLET_TRUE@am_mate_stickynotes_applet_OBJECTS =  \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	util.$(OBJEXT) \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	stickynotes.$(OBJEXT) \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	stickynotes_callbacks.$(OBJEXT) \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	stickynotes_applet.$(OBJEXT) \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	stickynotes_applet_callbacks.$(OBJEXT)
+-stickynotes_applet_OBJECTS = $(am_stickynotes_applet_OBJECTS)
++mate_stickynotes_applet_OBJECTS =  \
++	$(am_mate_stickynotes_applet_OBJECTS)
+ am__DEPENDENCIES_1 =
+-@BUILD_STICKYNOTES_APPLET_TRUE@stickynotes_applet_DEPENDENCIES =  \
++@BUILD_STICKYNOTES_APPLET_TRUE@mate_stickynotes_applet_DEPENDENCIES =  \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	$(am__DEPENDENCIES_1) \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	$(am__DEPENDENCIES_1) \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	$(am__DEPENDENCIES_1) \
+@@ -166,8 +166,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
+ am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
+ am__v_CCLD_0 = @echo "  CCLD    " $@;
+ am__v_CCLD_1 = 
+-SOURCES = $(stickynotes_applet_SOURCES)
+-DIST_SOURCES = $(am__stickynotes_applet_SOURCES_DIST)
++SOURCES = $(mate_stickynotes_applet_SOURCES)
++DIST_SOURCES = $(am__mate_stickynotes_applet_SOURCES_DIST)
+ RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
+ 	ctags-recursive dvi-recursive html-recursive info-recursive \
+ 	install-data-recursive install-dvi-recursive \
+@@ -323,7 +323,6 @@ GUCHARMAP_CFLAGS = @GUCHARMAP_CFLAGS@
+ GUCHARMAP_LIBS = @GUCHARMAP_LIBS@
+ HAVE_LIBAPM = @HAVE_LIBAPM@
+ HAVE_XKB = @HAVE_XKB@
+-HELP_DIR = @HELP_DIR@
+ INSTALL = @INSTALL@
+ INSTALL_DATA = @INSTALL_DATA@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+@@ -339,7 +338,6 @@ INTLTOOL_V_MERGE = @INTLTOOL_V_MERGE@
+ INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
+ INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
+ INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
+-ITSTOOL = @ITSTOOL@
+ IWLIB = @IWLIB@
+ LD = @LD@
+ LDFLAGS = @LDFLAGS@
+@@ -421,18 +419,14 @@ UPOWER_CFLAGS = @UPOWER_CFLAGS@
+ UPOWER_LIBS = @UPOWER_LIBS@
+ USE_NLS = @USE_NLS@
+ VERSION = @VERSION@
+-WARN_CFLAGS = @WARN_CFLAGS@
+ XGETTEXT = @XGETTEXT@
+ XMKMF = @XMKMF@
+ XML2_CFLAGS = @XML2_CFLAGS@
+ XML2_LIBS = @XML2_LIBS@
+-XMLLINT = @XMLLINT@
+ X_CFLAGS = @X_CFLAGS@
+ X_EXTRA_LIBS = @X_EXTRA_LIBS@
+ X_LIBS = @X_LIBS@
+ X_PRE_LIBS = @X_PRE_LIBS@
+-YELP_LC_DIST = @YELP_LC_DIST@
+-YELP_LC_MEDIA_LINKS = @YELP_LC_MEDIA_LINKS@
+ abs_builddir = @abs_builddir@
+ abs_srcdir = @abs_srcdir@
+ abs_top_builddir = @abs_top_builddir@
+@@ -513,7 +507,7 @@ schemas_in_files = stickynotes.schemas.i
+ @BUILD_STICKYNOTES_APPLET_TRUE@	$(XML2_CFLAGS)				\
+ @BUILD_STICKYNOTES_APPLET_TRUE@	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\"
+ 
+-@BUILD_STICKYNOTES_APPLET_TRUE@stickynotes_applet_SOURCES = \
++@BUILD_STICKYNOTES_APPLET_TRUE@mate_stickynotes_applet_SOURCES = \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	util.h \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	util.c \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	stickynotes.h \
+@@ -525,7 +519,7 @@ schemas_in_files = stickynotes.schemas.i
+ @BUILD_STICKYNOTES_APPLET_TRUE@	stickynotes_applet.c \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	stickynotes_applet_callbacks.c
+ 
+-@BUILD_STICKYNOTES_APPLET_TRUE@stickynotes_applet_LDADD = \
++@BUILD_STICKYNOTES_APPLET_TRUE@mate_stickynotes_applet_LDADD = \
+ @BUILD_STICKYNOTES_APPLET_TRUE@	$(STICKYNOTES_LIBS)	\
+ @BUILD_STICKYNOTES_APPLET_TRUE@	$(MATE_APPLETS4_LIBS)	\
+ @BUILD_STICKYNOTES_APPLET_TRUE@	$(MATEDESKTOP_LIBS)	\
+@@ -635,9 +629,9 @@ clean-libexecPROGRAMS:
+ 	echo " rm -f" $$list; \
+ 	rm -f $$list
+ 
+-stickynotes-applet$(EXEEXT): $(stickynotes_applet_OBJECTS) $(stickynotes_applet_DEPENDENCIES) $(EXTRA_stickynotes_applet_DEPENDENCIES) 
+-	@rm -f stickynotes-applet$(EXEEXT)
+-	$(AM_V_CCLD)$(LINK) $(stickynotes_applet_OBJECTS) $(stickynotes_applet_LDADD) $(LIBS)
++mate-stickynotes-applet$(EXEEXT): $(mate_stickynotes_applet_OBJECTS) $(mate_stickynotes_applet_DEPENDENCIES) $(EXTRA_mate_stickynotes_applet_DEPENDENCIES) 
++	@rm -f mate-stickynotes-applet$(EXEEXT)
++	$(AM_V_CCLD)$(LINK) $(mate_stickynotes_applet_OBJECTS) $(mate_stickynotes_applet_LDADD) $(LIBS)
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)
